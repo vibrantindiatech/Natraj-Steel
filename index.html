@@ -1,0 +1,3617 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/box logo-Photoroom.png" type="image/x-icon">
+  <title>Natraj Steel - Premium Steel Manufacturing</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f59e0b;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #f59e0b;
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #f59e0b;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.75rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Floating Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.75rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+            color: #fff;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        }
+
+        .back-to-top-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            min-height: 100%;
+            padding-top: 80px;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #cbd5e0;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #f59e0b;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: scaleIn 1s ease;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #f59e0b;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #cbd5e0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Company Intro Section - Home Page */
+        .company-intro-section {
+            padding: 8rem 2rem;
+            background: #fff;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .company-intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .company-intro-image {
+            position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+            height: 500px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+        }
+
+        .company-intro-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .company-intro-text h2 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        .company-intro-text p {
+            color: #64748b;
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Featured Products Section */
+        .featured-products-section {
+            padding: 8rem 2rem;
+            background: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .featured-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            border-color: #f59e0b;
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image-icon {
+            font-size: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #f59e0b;
+            color: #fff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            z-index: 4;
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .product-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .view-more-center {
+            text-align: center;
+        }
+
+        .btn-large {
+            padding: 1.25rem 3rem;
+            font-size: 1.15rem;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 8rem 2rem;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-card {
+            background: #f8fafc;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .review-rating {
+            color: #f59e0b;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-text {
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .review-author-info h4 {
+            font-size: 1.15rem;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .review-author-info p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* About Page */
+        .about-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 8rem 2rem 6rem;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-header p {
+            font-size: 1.35rem;
+            color: #cbd5e0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            padding: 8rem 2rem;
+            background: #fff;
+        }
+
+        .about-intro {
+            max-width: 1000px;
+            margin: 0 auto 8rem;
+            text-align: center;
+        }
+
+        .about-intro h2 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        .about-intro p {
+            font-size: 1.25rem;
+            color: #64748b;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Timeline Section - Redesigned */
+        .timeline-section {
+            padding: 8rem 2rem;
+            background: #f8fafc;
+        }
+
+        .timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #f59e0b, #d97706);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            margin-bottom: 6rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            margin-right: 4rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+            margin-left: 4rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: #f59e0b;
+            border: 6px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: translate(-50%, -50%) scale(1.2);
+            box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.3), 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+            z-index: 3;
+            white-space: nowrap;
+        }
+
+        .timeline-content {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -40px;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: #f59e0b;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.75rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .timeline-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            border-radius: 2px;
+        }
+
+        .timeline-content p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: -25px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            right: auto;
+            left: 30px;
+        }
+
+        /* Owner Section */
+        .owner-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .owner-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            right: -150px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .owner-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .owner-image-wrapper {
+            position: relative;
+        }
+
+        .owner-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 32px;
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            box-shadow: 0 30px 80px rgba(245, 158, 11, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .owner-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .owner-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            background: #fff;
+            padding: 1.5rem 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .owner-badge h4 {
+            color: #0f172a;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .owner-badge p {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .owner-info h2 {
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .owner-info h3 {
+            color: #f59e0b;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .owner-quote {
+            color: #cbd5e0;
+            font-size: 1.35rem;
+            line-height: 1.9;
+            font-style: italic;
+            border-left: 4px solid #f59e0b;
+            padding-left: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .owner-achievements {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .achievement-item {
+            text-align: center;
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-text {
+            color: #cbd5e0;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        /* Services Page */
+        .services-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 8rem 2rem 6rem;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .services-content {
+            padding: 8rem 2rem;
+            background: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: #f8fafc;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            border-color: #f59e0b;
+        }
+
+        .service-icon {
+            height: 200px;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover .service-icon::before {
+            left: 100%;
+        }
+
+        .service-content {
+            padding: 3rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.75rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .service-content p {
+            color: #64748b;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: #475569;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: #f59e0b;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-section {
+            padding: 8rem 2rem;
+            background: #f8fafc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: #f59e0b;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .feature-description {
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        /* Products Page */
+        .products-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 8rem 2rem 6rem;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .products-header p {
+            font-size: 1.35rem;
+            color: #cbd5e0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .products-content {
+            padding: 8rem 2rem;
+            background: #f8fafc;
+        }
+
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-bottom: 5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.875rem 2.25rem;
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            border-color: #f59e0b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .product-image-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: #fff;
+            padding: 2rem 1.5rem 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 800;
+            z-index: 3;
+        }
+
+        .product-footer {
+            display: flex;
+            gap: 1rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .btn-small {
+            padding: 0.875rem 1.75rem;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        /* Product Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 32px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #f59e0b;
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            padding: 4rem 3rem;
+            border-radius: 32px 32px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, transparent 100%);
+        }
+
+        .modal-title {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal-body {
+            padding: 4rem 3rem;
+        }
+
+        .modal-section {
+            margin-bottom: 4rem;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section h3 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .modal-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
+        .view-details-btn{
+            background-color: rgb(59 130 246 / 0.5);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .spec-item {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .spec-label {
+            color: #64748b;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .spec-value {
+            color: #0f172a;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            color: #475569;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: #f59e0b;
+            font-weight: bold;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 3rem;
+            background: #f8fafc;
+            border-radius: 0 0 32px 32px;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            padding: 1.25rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20BA5A;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-call {
+            background: #3b82f6;
+            color: #fff;
+        }
+
+        .btn-call:hover {
+            background: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Quote Form Modal */
+        .quote-form-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quote-form-card h3 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.875rem;
+            color: #0f172a;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.125rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #6ee7b7;
+        }
+
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #fca5a5;
+        }
+
+        /* Gallery Page */
+        .gallery-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 8rem 2rem 6rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .gallery-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-content {
+            padding: 8rem 2rem;
+            background: #f8fafc;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            transition: transform 0.4s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover .gallery-item-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: #fff;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-description {
+            color: #cbd5e0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* Gallery Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 80vh;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-info {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .lightbox-info h3 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .lightbox-info p {
+            font-size: 1.2rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: #f59e0b;
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        /* Contact Page */
+        .contact-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 8rem 2rem 6rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact-header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-content {
+            padding: 8rem 2rem;
+            background: #f8fafc;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+        }
+
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .contact-info-card {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-info-card h3 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            align-items: start;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .contact-details h4 {
+            font-size: 1.25rem;
+            color: #0f172a;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .contact-details p {
+            color: #64748b;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .contact-form-card {
+            background: #fff;
+            padding: 4rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form-card h3 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+        }
+
+        .map-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .map-section h3 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            padding: 3rem 3rem 0;
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #cbd5e0;
+            padding: 5rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h4 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .footer-section p {
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1.05rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #f59e0b;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 1.05rem;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content,
+            .company-intro-grid,
+            .owner-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .owner-achievements {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 80px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin: 2rem 0 0 0;
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-year {
+                left: 30px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-content::before {
+                display: none;
+            }
+
+            .timeline-icon {
+                top: -25px;
+                right: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                backdrop-filter: blur(20px);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-text h1,
+            .products-header h1,
+            .gallery-header h1,
+            .contact-header h1,
+            .about-header h1,
+            .services-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title,
+            .company-intro-text h2,
+            .owner-info h2 {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid,
+            .gallery-grid,
+            .featured-products-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats,
+            .owner-achievements {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                border-radius: 24px;
+            }
+
+            .modal-header,
+            .modal-body,
+            .modal-actions {
+                padding: 2rem;
+            }
+
+            .modal-title {
+                font-size: 2rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .product-footer {
+                flex-direction: column;
+            }
+
+            .lightbox-image {
+                height: 60vh;
+                font-size: 8rem;
+            }
+
+            .floating-buttons {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .timeline {
+                padding-left: 0;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-year {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .company-intro-image,
+            .owner-image {
+                height: 400px;
+                font-size: 8rem;
+            }
+
+            .product-image {
+                height: 250px;
+            }
+
+            .product-image-icon {
+                font-size: 4rem;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav class="navbar" id="navbar">
+   <div class="nav-container">
+    <div class="logo" data-page="home">
+     <div class="logo-icon">
+      🏭
+     </div><span id="nav-company-name">Natraj Steel</span>
+    </div>
+    <ul class="nav-menu" id="navMenu">
+     <li><a class="nav-link active" data-page="home">Home</a></li>
+     <li><a class="nav-link" data-page="about">About</a></li>
+     <li><a class="nav-link" data-page="services">Services</a></li>
+     <li><a class="nav-link" data-page="products">Products</a></li>
+     <li><a class="nav-link" data-page="gallery">Gallery</a></li>
+     <li><a class="nav-link" data-page="contact">Contact</a></li>
+    </ul><button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+   </div>
+  </nav><!-- Floating Buttons -->
+  <div class="floating-buttons"><button class="floating-btn whatsapp-btn" id="whatsappFloat" title="Chat on WhatsApp">💬</button> <button class="floating-btn back-to-top-btn" id="backToTop" title="Back to Top">↑</button>
+  </div><!-- Home Page -->
+  <div class="page active" id="home">
+   <section class="hero-section">
+    <div class="hero-content">
+     <div class="hero-text">
+      <h1 id="hero-title">Building Tomorrow's Infrastructure Today</h1>
+      <p id="hero-subtitle">India's leading manufacturer of premium quality steel products for construction, infrastructure, and industrial applications.</p>
+      <div class="cta-buttons"><button class="btn btn-primary" data-page="products">Explore Products →</button> <button class="btn btn-secondary" data-page="contact">Contact Us</button>
+      </div>
+     </div>
+     <div class="hero-visual">
+      <div class="hero-card">
+       <div class="hero-stats">
+        <div class="stat-item"><span class="stat-number">25+</span> <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item"><span class="stat-number">500K+</span> <span class="stat-label">Tons Annually</span>
+        </div>
+        <div class="stat-item"><span class="stat-number">50+</span> <span class="stat-label">Countries Served</span>
+        </div>
+        <div class="stat-item"><span class="stat-number">ISO</span> <span class="stat-label">Certified Quality</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="company-intro-section">
+    <div class="container">
+     <div class="company-intro-grid animate-on-scroll">
+      <div class="company-intro-image">
+       🏭
+      </div>
+      <div class="company-intro-text">
+       <h2 id="company-intro-title">Welcome to Natraj Steel</h2>
+       <p id="company-intro-text">With over 25 years of excellence in steel manufacturing, we are India's trusted partner for high-quality steel products. Our state-of-the-art facilities and commitment to innovation ensure that every product meets the highest international standards.</p>
+       <p>We specialize in producing premium TMT bars, structural steel, and industrial-grade steel products that power India's infrastructure development. From residential buildings to major infrastructure projects, our steel forms the backbone of construction across the nation.</p><button class="btn btn-primary" data-page="about">Learn More About Us →</button>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="featured-products-section">
+    <div class="container">
+     <div class="section-header"><span class="section-tag">Featured Products</span>
+      <h2 class="section-title">Our Top Steel Solutions</h2>
+      <p class="section-subtitle">Engineered for strength, designed for durability</p>
+     </div>
+     <div class="featured-products-grid" id="featuredProductsGrid"><!-- Featured products will be dynamically inserted -->
+     </div>
+     <div class="view-more-center"><button class="btn btn-primary btn-large" data-page="products">View All Products →</button>
+     </div>
+    </div>
+   </section>
+   <section class="reviews-section">
+    <div class="container">
+     <div class="section-header"><span class="section-tag">Testimonials</span>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-subtitle">Trusted by thousands of satisfied customers across India</p>
+     </div>
+     <div class="reviews-grid">
+      <div class="review-card animate-on-scroll">
+       <div class="review-rating">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="review-text">"Natraj Steel has been our trusted partner for over 10 years. Their TMT bars are consistently high quality, and their delivery is always on time. Highly recommended for large construction projects."</p>
+       <div class="review-author">
+        <div class="review-avatar">
+         👨‍💼
+        </div>
+        <div class="review-author-info">
+         <h4>Amit Sharma</h4>
+         <p>Director, BuildRight Construction</p>
+        </div>
+       </div>
+      </div>
+      <div class="review-card animate-on-scroll">
+       <div class="review-rating">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="review-text">"Exceptional quality steel at competitive prices. We've used their structural steel for multiple metro rail projects, and the performance has been outstanding. Their technical support team is also very helpful."</p>
+       <div class="review-author">
+        <div class="review-avatar">
+         👨‍🔧
+        </div>
+        <div class="review-author-info">
+         <h4>Rajesh Kumar</h4>
+         <p>Project Manager, Metro Infrastructure Ltd</p>
+        </div>
+       </div>
+      </div>
+      <div class="review-card animate-on-scroll">
+       <div class="review-rating">
+        ⭐⭐⭐⭐⭐
+       </div>
+       <p class="review-text">"We've built over 500 residential units using Natraj Steel products. The consistency in quality and their prompt customer service makes them our go-to steel supplier. Great value for money!"</p>
+       <div class="review-author">
+        <div class="review-avatar">
+         👨‍💼
+        </div>
+        <div class="review-author-info">
+         <h4>Priya Verma</h4>
+         <p>CEO, Skyline Developers</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="why-choose-section">
+    <div class="container">
+     <div class="section-header"><span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">Excellence in Every Detail</h2>
+      <p class="section-subtitle">We deliver unmatched quality, innovation, and service</p>
+     </div>
+     <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🏆
+       </div>
+       <h3 class="feature-title">Premium Quality</h3>
+       <p class="feature-description">ISO 9001:2015 certified manufacturing with rigorous quality control at every stage.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        ⚡
+       </div>
+       <h3 class="feature-title">Fast Delivery</h3>
+       <p class="feature-description">Efficient logistics network ensuring timely delivery across all major cities.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        💎
+       </div>
+       <h3 class="feature-title">Best Prices</h3>
+       <p class="feature-description">Competitive pricing without compromising quality. Best value for premium products.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🔧
+       </div>
+       <h3 class="feature-title">Technical Support</h3>
+       <p class="feature-description">Expert guidance from experienced technical team. 24/7 customer support.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🌍
+       </div>
+       <h3 class="feature-title">Global Reach</h3>
+       <p class="feature-description">Serving clients across 50+ countries with consistent quality.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        ♻️
+       </div>
+       <h3 class="feature-title">Sustainable</h3>
+       <p class="feature-description">Eco-friendly manufacturing with minimal environmental impact.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- About Page -->
+  <div class="page" id="about">
+   <section class="about-header">
+    <div class="container"><span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">About Us</span>
+     <h1>Building India's Future with Quality Steel</h1>
+     <p>25+ years of excellence in steel manufacturing</p>
+    </div>
+   </section>
+   <section class="about-content">
+    <div class="container">
+     <div class="about-intro animate-on-scroll">
+      <h2>Excellence in Steel Manufacturing Since 1998</h2>
+      <p>Natraj Steel has been at the forefront of India's steel industry for over 25 years. We combine traditional craftsmanship with cutting-edge technology to deliver steel products that meet the highest international standards.</p>
+      <p>Our state-of-the-art manufacturing facilities span over 50 acres and are equipped with the latest German and Japanese technology. We produce a comprehensive range of steel products including TMT bars, structural steel, and specialized industrial steel that powers India's infrastructure growth.</p>
+      <p>With a production capacity of 500,000 tons annually, we serve over 50 countries worldwide while maintaining our commitment to quality, innovation, and customer satisfaction. Our ISO 9001:2015 certification and multiple industry awards stand testament to our unwavering dedication to excellence.</p>
+     </div>
+    </div>
+   </section>
+   <section class="timeline-section">
+    <div class="container">
+     <div class="section-header"><span class="section-tag">Our Journey</span>
+      <h2 class="section-title">Milestones of Excellence</h2>
+      <p class="section-subtitle">Charting our growth from a local manufacturer to an international steel leader</p>
+     </div>
+     <div class="timeline">
+      <div class="timeline-item animate-on-scroll">
+       <div class="timeline-dot"></div>
+       <div class="timeline-year">
+        1998
+       </div>
+       <div class="timeline-content">
+        <div class="timeline-icon">
+         🚀
+        </div>
+        <h3>Foundation & Vision</h3>
+        <p>Natraj Steel was established with a vision to revolutionize India's steel industry. Started with a small facility producing 10,000 tons annually, laying the foundation for future growth.</p>
+       </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+       <div class="timeline-dot"></div>
+       <div class="timeline-year">
+        2005
+       </div>
+       <div class="timeline-content">
+        <div class="timeline-icon">
+         ✅
+        </div>
+        <h3>ISO Certification</h3>
+        <p>Achieved ISO 9001:2000 certification, marking our commitment to international quality standards. Expanded production capacity to 100,000 tons and established quality benchmarks.</p>
+       </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+       <div class="timeline-dot"></div>
+       <div class="timeline-year">
+        2010
+       </div>
+       <div class="timeline-content">
+        <div class="timeline-icon">
+         ⚙️
+        </div>
+        <h3>Technology Upgrade</h3>
+        <p>Invested in German and Japanese technology for TMT bar production. Introduced automated quality control systems and increased capacity to 250,000 tons annually.</p>
+       </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+       <div class="timeline-dot"></div>
+       <div class="timeline-year">
+        2015
+       </div>
+       <div class="timeline-content">
+        <div class="timeline-icon">
+         🌍
+        </div>
+        <h3>Global Expansion</h3>
+        <p>Expanded exports to 30+ countries across Asia, Middle East, and Africa. Launched structural steel division for mega infrastructure projects and established international presence.</p>
+       </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+       <div class="timeline-dot"></div>
+       <div class="timeline-year">
+        2020
+       </div>
+       <div class="timeline-content">
+        <div class="timeline-icon">
+         ♻️
+        </div>
+        <h3>Sustainable Manufacturing</h3>
+        <p>Implemented green manufacturing practices, reducing carbon footprint by 40%. Achieved production capacity of 500,000 tons annually while maintaining environmental responsibility.</p>
+       </div>
+      </div>
+      <div class="timeline-item animate-on-scroll">
+       <div class="timeline-dot"></div>
+       <div class="timeline-year">
+        2024
+       </div>
+       <div class="timeline-content">
+        <div class="timeline-icon">
+         🏆
+        </div>
+        <h3>Industry Leadership</h3>
+        <p>Recognized as one of India's top steel manufacturers. Serving 50+ countries with cutting-edge steel solutions for modern infrastructure and construction projects.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="owner-section">
+    <div class="container">
+     <div class="owner-content animate-on-scroll">
+      <div class="owner-image-wrapper">
+       <div class="owner-image">
+        👨‍💼
+       </div>
+       <div class="owner-badge">
+        <h4 id="owner-name-badge">Rajesh Kumar</h4>
+        <p id="owner-title-badge">Founder &amp; CEO</p>
+       </div>
+      </div>
+      <div class="owner-info">
+       <h2 id="owner-name">Rajesh Kumar</h2>
+       <h3 id="owner-title">Founder &amp; CEO</h3>
+       <blockquote class="owner-quote" id="owner-quote">
+        "Our vision has always been simple - to build the strongest steel for the strongest nation. Every ton of steel we produce carries our commitment to quality, innovation, and the future of India's infrastructure."
+       </blockquote>
+       <div class="owner-achievements">
+        <div class="achievement-item">
+         <div class="achievement-icon">
+          🏆
+         </div>
+         <p class="achievement-text">Industry Leader Award 2023</p>
+        </div>
+        <div class="achievement-item">
+         <div class="achievement-icon">
+          🌟
+         </div>
+         <p class="achievement-text">Excellence in Manufacturing</p>
+        </div>
+        <div class="achievement-item">
+         <div class="achievement-icon">
+          💼
+         </div>
+         <p class="achievement-text">30+ Years Experience</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="why-choose-section">
+    <div class="container">
+     <div class="section-header"><span class="section-tag">Our Strengths</span>
+      <h2 class="section-title">Why Industry Leaders Choose Us</h2>
+      <p class="section-subtitle">Combining innovation, quality, and reliability in every product</p>
+     </div>
+     <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🏆
+       </div>
+       <h3 class="feature-title">Premium Quality</h3>
+       <p class="feature-description">ISO 9001:2015 certified with rigorous quality control at every production stage.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        ⚡
+       </div>
+       <h3 class="feature-title">Fast Delivery</h3>
+       <p class="feature-description">Pan-India distribution network ensuring timely delivery to your project site.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        💎
+       </div>
+       <h3 class="feature-title">Competitive Pricing</h3>
+       <p class="feature-description">Best-in-class prices without any compromise on quality or service.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🔧
+       </div>
+       <h3 class="feature-title">Technical Expertise</h3>
+       <p class="feature-description">Dedicated technical team providing 24/7 support and consultation.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🌍
+       </div>
+       <h3 class="feature-title">Global Standards</h3>
+       <p class="feature-description">Manufacturing processes compliant with international quality benchmarks.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        ♻️
+       </div>
+       <h3 class="feature-title">Eco-Friendly</h3>
+       <p class="feature-description">Sustainable practices reducing environmental impact by 40%.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- Services Page -->
+  <div class="page" id="services">
+   <section class="services-header">
+    <div class="container"><span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Our Services</span>
+     <h1>Comprehensive Steel Solutions</h1>
+     <p>End-to-end services for all your steel requirements</p>
+    </div>
+   </section>
+   <section class="services-content">
+    <div class="container">
+     <div class="services-grid">
+      <div class="service-card animate-on-scroll">
+       <div class="service-icon">
+        🏗️
+       </div>
+       <div class="service-content">
+        <h3>Steel Manufacturing</h3>
+        <p>State-of-the-art manufacturing facilities producing premium quality steel products including TMT bars, structural steel, and industrial-grade steel.</p>
+        <ul class="service-features">
+         <li>High-strength TMT bars (Fe 500D/550D)</li>
+         <li>Structural steel components</li>
+         <li>Industrial steel products</li>
+         <li>Custom steel fabrication</li>
+         <li>Quality assured production</li>
+        </ul>
+       </div>
+      </div>
+      <div class="service-card animate-on-scroll">
+       <div class="service-icon">
+        📋
+       </div>
+       <div class="service-content">
+        <h3>Technical Consultation</h3>
+        <p>Expert technical guidance for selecting the right steel products for your specific project requirements and ensuring optimal performance.</p>
+        <ul class="service-features">
+         <li>Project requirement analysis</li>
+         <li>Material specification guidance</li>
+         <li>Structural design support</li>
+         <li>Load calculation assistance</li>
+         <li>24/7 technical helpline</li>
+        </ul>
+       </div>
+      </div>
+      <div class="service-card animate-on-scroll">
+       <div class="service-icon">
+        🚚
+       </div>
+       <div class="service-content">
+        <h3>Logistics &amp; Delivery</h3>
+        <p>Efficient pan-India distribution network ensuring timely delivery of steel products directly to your construction site.</p>
+        <ul class="service-features">
+         <li>Pan-India delivery network</li>
+         <li>Real-time shipment tracking</li>
+         <li>On-time guaranteed delivery</li>
+         <li>Proper packaging &amp; handling</li>
+         <li>Direct site delivery available</li>
+        </ul>
+       </div>
+      </div>
+      <div class="service-card animate-on-scroll">
+       <div class="service-icon">
+        🔬
+       </div>
+       <div class="service-content">
+        <h3>Quality Testing</h3>
+        <p>Comprehensive quality testing services with advanced laboratory facilities ensuring every product meets stringent quality standards.</p>
+        <ul class="service-features">
+         <li>Tensile strength testing</li>
+         <li>Chemical composition analysis</li>
+         <li>Bend test certifications</li>
+         <li>Ultrasonic testing</li>
+         <li>ISO certified lab reports</li>
+        </ul>
+       </div>
+      </div>
+      <div class="service-card animate-on-scroll">
+       <div class="service-icon">
+        🎯
+       </div>
+       <div class="service-content">
+        <h3>Custom Solutions</h3>
+        <p>Tailored steel solutions designed specifically for large-scale infrastructure projects, industrial applications, and special requirements.</p>
+        <ul class="service-features">
+         <li>Customized steel grades</li>
+         <li>Special dimension fabrication</li>
+         <li>Project-specific solutions</li>
+         <li>Bulk order management</li>
+         <li>Long-term supply contracts</li>
+        </ul>
+       </div>
+      </div>
+      <div class="service-card animate-on-scroll">
+       <div class="service-icon">
+        💼
+       </div>
+       <div class="service-content">
+        <h3>After-Sales Support</h3>
+        <p>Dedicated after-sales service ensuring complete customer satisfaction with warranty support and technical assistance.</p>
+        <ul class="service-features">
+         <li>Warranty on all products</li>
+         <li>Technical troubleshooting</li>
+         <li>Replacement assistance</li>
+         <li>Regular follow-up calls</li>
+         <li>Customer feedback management</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="why-choose-section">
+    <div class="container">
+     <div class="section-header"><span class="section-tag">Service Excellence</span>
+      <h2 class="section-title">Why Our Services Stand Out</h2>
+      <p class="section-subtitle">Commitment to quality, innovation, and customer satisfaction</p>
+     </div>
+     <div class="features-grid">
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        ⏰
+       </div>
+       <h3 class="feature-title">24/7 Availability</h3>
+       <p class="feature-description">Round-the-clock customer support and emergency assistance for urgent requirements.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        👥
+       </div>
+       <h3 class="feature-title">Expert Team</h3>
+       <p class="feature-description">Highly qualified engineers and technicians with decades of industry experience.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        📊
+       </div>
+       <h3 class="feature-title">Transparent Pricing</h3>
+       <p class="feature-description">Clear, upfront pricing with no hidden costs. Best value for your investment.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        ✅
+       </div>
+       <h3 class="feature-title">Quality Guarantee</h3>
+       <p class="feature-description">100% quality assurance on all products with comprehensive warranty coverage.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🚀
+       </div>
+       <h3 class="feature-title">Fast Turnaround</h3>
+       <p class="feature-description">Quick processing and delivery ensuring your project stays on schedule.</p>
+      </div>
+      <div class="feature-card animate-on-scroll">
+       <div class="feature-icon">
+        🌟
+       </div>
+       <h3 class="feature-title">Customer First</h3>
+       <p class="feature-description">Customer satisfaction is our top priority. We go the extra mile for you.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- Products Page -->
+  <div class="page" id="products">
+   <section class="products-header">
+    <div class="container"><span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Our Products</span>
+     <h1>Premium Steel Solutions</h1>
+     <p>Engineered for strength, designed for durability</p>
+    </div>
+   </section>
+   <section class="products-content">
+    <div class="container">
+     <div class="products-filter"><button class="filter-btn active" data-filter="all">All Products</button> <button class="filter-btn" data-filter="construction">Construction Steel</button> <button class="filter-btn" data-filter="structural">Structural Steel</button> <button class="filter-btn" data-filter="industrial">Industrial Steel</button>
+     </div>
+     <div class="products-grid" id="productsGrid"><!-- Products will be dynamically inserted -->
+     </div>
+    </div>
+   </section>
+  </div><!-- Gallery Page -->
+  <div class="page" id="gallery">
+   <section class="gallery-header">
+    <div class="container"><span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Gallery</span>
+     <h1>Our Projects &amp; Facilities</h1>
+     <p>Showcasing excellence in steel manufacturing</p>
+    </div>
+   </section>
+   <section class="gallery-content">
+    <div class="container">
+     <div class="gallery-grid">
+      <div class="gallery-item animate-on-scroll" data-gallery-id="1">
+       <div class="gallery-item-image">
+        🏭
+       </div>
+       <div class="gallery-overlay">
+        <div class="gallery-title">
+         Main Manufacturing Facility
+        </div>
+        <p class="gallery-description">State-of-the-art 50-acre manufacturing complex with advanced automation and quality control systems</p>
+       </div>
+      </div>
+      <div class="gallery-item animate-on-scroll" data-gallery-id="2">
+       <div class="gallery-item-image">
+        🏗️
+       </div>
+       <div class="gallery-overlay">
+        <div class="gallery-title">
+         TMT Bars Production Line
+        </div>
+        <p class="gallery-description">High-capacity rolling mill equipped with German technology for premium TMT bar production</p>
+       </div>
+      </div>
+      <div class="gallery-item animate-on-scroll" data-gallery-id="3">
+       <div class="gallery-item-image">
+        🏢
+       </div>
+       <div class="gallery-overlay">
+        <div class="gallery-title">
+         Tech Tower Complex
+        </div>
+        <p class="gallery-description">40-story commercial tower in Bangalore using 15,000 tons of our premium steel products</p>
+       </div>
+      </div>
+      <div class="gallery-item animate-on-scroll" data-gallery-id="4">
+       <div class="gallery-item-image">
+        ⚙️
+       </div>
+       <div class="gallery-overlay">
+        <div class="gallery-title">
+         Quality Control Laboratory
+        </div>
+        <p class="gallery-description">Advanced testing facility with latest equipment for comprehensive quality assurance</p>
+       </div>
+      </div>
+      <div class="gallery-item animate-on-scroll" data-gallery-id="5">
+       <div class="gallery-item-image">
+        🌉
+       </div>
+       <div class="gallery-overlay">
+        <div class="gallery-title">
+         Metro Bridge Construction
+        </div>
+        <p class="gallery-description">2.5km metro rail bridge in Mumbai built with our high-strength structural steel</p>
+       </div>
+      </div>
+      <div class="gallery-item animate-on-scroll" data-gallery-id="6">
+       <div class="gallery-item-image">
+        🔥
+       </div>
+       <div class="gallery-overlay">
+        <div class="gallery-title">
+         Rolling Mill Operations
+        </div>
+        <p class="gallery-description">24/7 production facility with annual capacity of 500,000 tons of premium steel</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- Contact Page -->
+  <div class="page" id="contact">
+   <section class="contact-header">
+    <div class="container"><span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Get In Touch</span>
+     <h1>Contact Us</h1>
+     <p>Let's discuss your steel requirements</p>
+    </div>
+   </section>
+   <section class="contact-content">
+    <div class="contact-grid">
+     <div class="contact-info-section">
+      <div class="contact-info-card animate-on-scroll">
+       <h3>Contact Information</h3>
+       <div class="contact-item">
+        <div class="contact-icon">
+         📍
+        </div>
+        <div class="contact-details">
+         <h4>Head Office</h4>
+         <p id="contact-address-display">Industrial Area, Phase 2, Sector 58, New Delhi - 110020, India</p>
+        </div>
+       </div>
+       <div class="contact-item">
+        <div class="contact-icon">
+         📞
+        </div>
+        <div class="contact-details">
+         <h4>Phone Number</h4>
+         <p id="contact-phone-display">+91 11 4567 8900</p>
+        </div>
+       </div>
+       <div class="contact-item">
+        <div class="contact-icon">
+         📧
+        </div>
+        <div class="contact-details">
+         <h4>Email Address</h4>
+         <p id="contact-email-display">info@natrajsteel.com</p>
+        </div>
+       </div>
+       <div class="contact-item">
+        <div class="contact-icon">
+         🕐
+        </div>
+        <div class="contact-details">
+         <h4>Business Hours</h4>
+         <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+         <p>24/7 Emergency Support</p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="contact-form-card animate-on-scroll">
+      <h3>Send Us a Message</h3>
+      <form id="contactForm">
+       <div class="form-row">
+        <div class="form-group"><label for="firstName">First Name *</label> <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group"><label for="lastName">Last Name *</label> <input type="text" id="lastName" name="lastName" required>
+        </div>
+       </div>
+       <div class="form-row">
+        <div class="form-group"><label for="email">Email Address *</label> <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group"><label for="phone">Phone Number *</label> <input type="tel" id="phone" name="phone" required>
+        </div>
+       </div>
+       <div class="form-group"><label for="company">Company Name</label> <input type="text" id="company" name="company">
+       </div>
+       <div class="form-group"><label for="subject">Subject *</label> <input type="text" id="subject" name="subject" required>
+       </div>
+       <div class="form-group"><label for="message">Message *</label> <textarea id="message" name="message" required placeholder="Tell us about your requirements..."></textarea>
+       </div><button type="submit" class="submit-btn" id="submitBtn"> <span id="submitText">Send Message</span> </button>
+       <div class="form-message" id="formMessage"></div>
+      </form>
+     </div>
+    </div>
+    <div class="map-section animate-on-scroll">
+     <h3>Find Us on Map</h3><iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0089788456916!2d77.2090212!3d28.6289317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM3JzQ0LjIiTiA3N8KwMTInMzIuNSJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"> </iframe>
+    </div>
+   </section>
+  </div><!-- Footer -->
+  <footer class="footer">
+   <div class="footer-content">
+    <div class="footer-section">
+     <h4 id="footer-company-name">Natraj Steel</h4>
+     <p id="footer-tagline">Excellence in Steel Manufacturing</p>
+     <p>Building stronger foundations for a better tomorrow.</p>
+    </div>
+    <div class="footer-section">
+     <h4>Quick Links</h4>
+     <ul class="footer-links">
+      <li><a data-page="home">Home</a></li>
+      <li><a data-page="about">About</a></li>
+      <li><a data-page="services">Services</a></li>
+      <li><a data-page="products">Products</a></li>
+      <li><a data-page="gallery">Gallery</a></li>
+      <li><a data-page="contact">Contact</a></li>
+     </ul>
+    </div>
+    <div class="footer-section">
+     <h4>Products</h4>
+     <ul class="footer-links">
+      <li><a data-page="products">TMT Bars</a></li>
+      <li><a data-page="products">Steel Angles</a></li>
+      <li><a data-page="products">Steel Plates</a></li>
+      <li><a data-page="products">MS Channels</a></li>
+     </ul>
+    </div>
+    <div class="footer-section">
+     <h4>Certifications</h4>
+     <p>ISO 9001:2015 Certified</p>
+     <p>BIS Certified Products</p>
+     <p>CE Marked for Export</p>
+    </div>
+   </div>
+   <div class="footer-bottom">
+    <p>© 2024 Natraj Steel. All rights reserved.</p>
+   </div>
+  </footer><!-- Product Modal -->
+  <div class="modal" id="productModal">
+   <div class="modal-content"><button class="modal-close" id="modalClose">×</button>
+    <div class="modal-header">
+     <h2 class="modal-title" id="modalTitle"></h2>
+     <p class="modal-subtitle" id="modalSubtitle"></p>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions"><button class="btn btn-call" id="callBtn">📞 Call Now</button> <button class="btn btn-whatsapp" id="whatsappBtn">💬 WhatsApp</button> <button class="btn btn-primary" id="quoteBtn">Get Quote</button>
+    </div>
+   </div>
+  </div><!-- Quote Form Modal -->
+  <div class="modal" id="quoteModal">
+   <div class="modal-content"><button class="modal-close" id="quoteModalClose">×</button>
+    <div class="modal-body">
+     <div class="quote-form-card">
+      <h3>Request a Quote</h3>
+      <form id="quoteForm"><input type="hidden" id="quoteProductName" name="productName">
+       <div class="form-row">
+        <div class="form-group"><label for="quoteName">Full Name *</label> <input type="text" id="quoteName" required>
+        </div>
+        <div class="form-group"><label for="quoteEmail">Email *</label> <input type="email" id="quoteEmail" required>
+        </div>
+       </div>
+       <div class="form-row">
+        <div class="form-group"><label for="quotePhone">Phone *</label> <input type="tel" id="quotePhone" required>
+        </div>
+        <div class="form-group"><label for="quoteCompany">Company</label> <input type="text" id="quoteCompany">
+        </div>
+       </div>
+       <div class="form-group"><label for="quoteQuantity">Estimated Quantity</label> <input type="text" id="quoteQuantity" placeholder="e.g., 50 tons">
+       </div>
+       <div class="form-group"><label for="quoteMessage">Project Details *</label> <textarea id="quoteMessage" required placeholder="Tell us about your project requirements..."></textarea>
+       </div><button type="submit" class="submit-btn" id="quoteSubmitBtn"> <span id="quoteSubmitText">Submit Quote Request</span> </button>
+       <div class="form-message" id="quoteFormMessage"></div>
+      </form>
+     </div>
+    </div>
+   </div>
+  </div><!-- Gallery Lightbox -->
+  <div class="lightbox" id="lightbox"><button class="lightbox-close" id="lightboxClose">×</button>
+   <div class="lightbox-content">
+    <div class="lightbox-image" id="lightboxImage"></div>
+    <div class="lightbox-info">
+     <h3 id="lightboxTitle"></h3>
+     <p id="lightboxDescription"></p>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Configuration
+        const defaultConfig = {
+            company_name: "Natraj Steel",
+            tagline: "Excellence in Steel Manufacturing",
+            hero_title: "Building Tomorrow's Infrastructure Today",
+            hero_subtitle: "India's leading manufacturer of premium quality steel products for construction, infrastructure, and industrial applications.",
+            company_intro_title: "Welcome to Natraj Steel",
+            company_intro_text: "With over 25 years of excellence in steel manufacturing, we are India's trusted partner for high-quality steel products. Our state-of-the-art facilities and commitment to innovation ensure that every product meets the highest international standards.",
+            owner_name: "Rajesh Kumar",
+            owner_title: "Founder & CEO",
+            owner_quote: "Our vision has always been simple - to build the strongest steel for the strongest nation. Every ton of steel we produce carries our commitment to quality, innovation, and the future of India's infrastructure.",
+            contact_email: "info@natrajsteel.com",
+            contact_phone: "+91 11 4567 8900",
+            contact_address: "Industrial Area, Phase 2, Sector 58, New Delhi - 110020, India"
+        };
+
+        // Products Data
+        const productsData = [
+            {
+                id: 1,
+                name: "TMT Bars (Fe 500D)",
+                category: "construction",
+                icon: "🏗️",
+                badge: "Bestseller",
+                shortDesc: "High-strength thermo-mechanically treated steel reinforcement bars",
+                fullDesc: "Premium quality TMT bars manufactured using the latest Thermex technology, offering superior strength, ductility, and earthquake resistance. Perfect for residential, commercial, and infrastructure projects.",
+                specs: [
+                    { label: "Grade", value: "Fe 500D / Fe 550D" },
+                    { label: "Diameter", value: "8mm - 32mm" },
+                    { label: "Elongation", value: "14.5% min" },
+                    { label: "Standard", value: "IS 1786:2008" }
+                ],
+                features: [
+                    "Superior earthquake resistance with high ductility",
+                    "Excellent bendability and weldability",
+                    "High corrosion resistance for longer life",
+                    "BIS certified quality",
+                    "Cost-effective with reduced material usage",
+                    "Available in various grades and sizes"
+                ]
+            },
+            {
+                id: 2,
+                name: "Steel Angles",
+                category: "structural",
+                icon: "📏",
+                badge: null,
+                shortDesc: "Precision-engineered structural steel angles for diverse applications",
+                fullDesc: "High-quality equal and unequal steel angles manufactured to exact specifications. Ideal for construction frameworks, industrial structures, and fabrication work.",
+                specs: [
+                    { label: "Type", value: "Equal & Unequal" },
+                    { label: "Size Range", value: "25mm - 200mm" },
+                    { label: "Thickness", value: "3mm - 20mm" },
+                    { label: "Standard", value: "IS 2062:2011" }
+                ],
+                features: [
+                    "High tensile strength for structural integrity",
+                    "Custom lengths available (6m to 12m)",
+                    "Pre-galvanized options for corrosion protection",
+                    "Precision-cut edges for easy fabrication",
+                    "Multiple finish options available",
+                    "Suitable for welding and bolting"
+                ]
+            },
+            {
+                id: 3,
+                name: "Steel Plates",
+                category: "industrial",
+                icon: "⬜",
+                badge: "Premium",
+                shortDesc: "Heavy-duty structural steel plates for demanding applications",
+                fullDesc: "Industrial-grade steel plates engineered for heavy construction, specialized manufacturing, and high-stress applications. Available in various thicknesses and grades.",
+                specs: [
+                    { label: "Thickness", value: "6mm - 100mm" },
+                    { label: "Width", value: "1250mm - 2500mm" },
+                    { label: "Grade", value: "E250/E350/E450" },
+                    { label: "Standard", value: "IS 2062:2011" }
+                ],
+                features: [
+                    "High carbon content for maximum strength",
+                    "Precision cut to exact specifications",
+                    "Weather resistant coating options",
+                    "Marine grade steel available",
+                    "Abrasion resistant (AR) variants",
+                    "Custom sizing and finishing services"
+                ]
+            },
+            {
+                id: 4,
+                name: "MS Channels",
+                category: "structural",
+                icon: "🔩",
+                badge: null,
+                shortDesc: "Versatile mild steel channels for structural frameworks",
+                fullDesc: "Premium quality MS channels perfect for building frameworks, supporting structures, and industrial fabrication. Available in ISMC, ISLC, and ISMCP variants.",
+                specs: [
+                    { label: "Type", value: "ISMC/ISLC/ISMCP" },
+                    { label: "Size Range", value: "75mm - 400mm" },
+                    { label: "Length", value: "6m - 12m" },
+                    { label: "Standard", value: "IS 2062:2011" }
+                ],
+                features: [
+                    "Excellent load-bearing capacity",
+                    "Easy to fabricate and weld",
+                    "Cost-effective structural solution",
+                    "Hot-rolled finish with consistent quality",
+                    "Parallel and tapered flange options",
+                    "Ideal for building construction and bridges"
+                ]
+            },
+            {
+                id: 5,
+                name: "I-Beams & H-Beams",
+                category: "structural",
+                icon: "🔲",
+                badge: null,
+                shortDesc: "High-performance structural beams for heavy construction",
+                fullDesc: "Superior quality I-Beams and H-Beams designed for maximum load-bearing capacity. Essential for large-span structures, bridges, and industrial buildings.",
+                specs: [
+                    { label: "Type", value: "I-Beam / H-Beam" },
+                    { label: "Size Range", value: "100mm - 600mm" },
+                    { label: "Length", value: "6m - 12m" },
+                    { label: "Standard", value: "IS 2062:2011" }
+                ],
+                features: [
+                    "Wide and narrow flange options",
+                    "Superior load capacity for heavy structures",
+                    "Structural grade certified strength",
+                    "Long-span capability without supports",
+                    "Pre-fabrication services available",
+                    "Suitable for multi-story buildings"
+                ]
+            },
+            {
+                id: 6,
+                name: "Wire Rods",
+                category: "industrial",
+                icon: "⚙️",
+                badge: null,
+                shortDesc: "Premium wire rods for wire drawing and manufacturing",
+                fullDesc: "High-purity wire rods manufactured to precise specifications for wire drawing, fastener production, and diverse industrial applications.",
+                specs: [
+                    { label: "Diameter", value: "5.5mm - 16mm" },
+                    { label: "Grade", value: "SAE 1006/1008" },
+                    { label: "Coil Weight", value: "1.8 - 2.5 MT" },
+                    { label: "Standard", value: "IS 6240:1999" }
+                ],
+                features: [
+                    "High purity steel composition",
+                    "Consistent diameter control",
+                    "Multiple grade options available",
+                    "Smooth surface finish",
+                    "Excellent drawability",
+                    "Suitable for wire manufacturing"
+                ]
+            }
+        ];
+
+        // Gallery Data
+        const galleryData = [
+            { id: 1, icon: "🏭", title: "Main Manufacturing Facility", description: "State-of-the-art 50-acre manufacturing complex with advanced automation and quality control systems" },
+            { id: 2, icon: "🏗️", title: "TMT Bars Production Line", description: "High-capacity rolling mill equipped with German technology for premium TMT bar production" },
+            { id: 3, icon: "🏢", title: "Tech Tower Complex", description: "40-story commercial tower in Bangalore using 15,000 tons of our premium steel products" },
+            { id: 4, icon: "⚙️", title: "Quality Control Laboratory", description: "Advanced testing facility with latest equipment for comprehensive quality assurance" },
+            { id: 5, icon: "🌉", title: "Metro Bridge Construction", description: "2.5km metro rail bridge in Mumbai built with our high-strength structural steel" },
+            { id: 6, icon: "🔥", title: "Rolling Mill Operations", description: "24/7 production facility with annual capacity of 500,000 tons of premium steel" }
+        ];
+
+        // Element SDK
+        async function onConfigChange(config) {
+            const elements = {
+                'nav-company-name': config.company_name,
+                'hero-title': config.hero_title,
+                'hero-subtitle': config.hero_subtitle,
+                'company-intro-title': config.company_intro_title,
+                'company-intro-text': config.company_intro_text,
+                'owner-name': config.owner_name,
+                'owner-title': config.owner_title,
+                'owner-name-badge': config.owner_name,
+                'owner-title-badge': config.owner_title,
+                'owner-quote': config.owner_quote,
+                'contact-address-display': config.contact_address,
+                'contact-phone-display': config.contact_phone,
+                'contact-email-display': config.contact_email,
+                'footer-company-name': config.company_name,
+                'footer-tagline': config.tagline
+            };
+
+            Object.entries(elements).forEach(([id, value]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = value || defaultConfig[id.replace(/-/g, '_')];
+                }
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["company_name", config.company_name || defaultConfig.company_name],
+                ["tagline", config.tagline || defaultConfig.tagline],
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["company_intro_title", config.company_intro_title || defaultConfig.company_intro_title],
+                ["company_intro_text", config.company_intro_text || defaultConfig.company_intro_text],
+                ["owner_name", config.owner_name || defaultConfig.owner_name],
+                ["owner_title", config.owner_title || defaultConfig.owner_title],
+                ["owner_quote", config.owner_quote || defaultConfig.owner_quote],
+                ["contact_email", config.contact_email || defaultConfig.contact_email],
+                ["contact_phone", config.contact_phone || defaultConfig.contact_phone],
+                ["contact_address", config.contact_address || defaultConfig.contact_address]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Data SDK
+        const dataHandler = {
+            onDataChanged(data) {
+                // Data updated - no action needed for this implementation
+            }
+        };
+
+        async function initDataSdk() {
+            if (window.dataSdk) {
+                const result = await window.dataSdk.init(dataHandler);
+                if (!result.isOk) {
+                    console.error("Failed to initialize Data SDK");
+                }
+            }
+        }
+
+        initDataSdk();
+
+        // Navigation
+        let currentPage = 'home';
+
+        function navigateToPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                currentPage = pageId;
+                
+                document.querySelectorAll(`[data-page="${pageId}"]`).forEach(link => {
+                    if (link.classList.contains('nav-link')) {
+                        link.classList.add('active');
+                    }
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.remove('active');
+            }
+        }
+
+        document.querySelectorAll('[data-page]').forEach(element => {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = element.getAttribute('data-page');
+                navigateToPage(pageId);
+            });
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+            renderFeaturedProducts();
+            renderProducts('all');
+        });
+
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+                backToTop.classList.add('visible');
+            } else {
+                navbar.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to Top
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // WhatsApp Float
+        document.getElementById('whatsappFloat').addEventListener('click', () => {
+            const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+            const phone = (config.contact_phone || defaultConfig.contact_phone).replace(/\D/g, '');
+            window.open(`https://wa.me/${phone}?text=Hi, I'm interested in Natraj Steel products`, '_blank');
+        });
+
+        // Featured Products Rendering (Top 3)
+        function renderFeaturedProducts() {
+            const grid = document.getElementById('featuredProductsGrid');
+            const featured = productsData.slice(0, 3);
+            
+            grid.innerHTML = featured.map(product => `
+                <div class="product-card animate-on-scroll">
+                    <div class="product-image">
+                        <div class="product-image-icon">${product.icon}</div>
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.shortDesc}</p>
+                        <button class="btn btn-primary" data-product-id="${product.id}" onclick="showProductModal(${product.id})">View Details →</button>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Products Rendering
+        function renderProducts(filter) {
+            const grid = document.getElementById('productsGrid');
+            const filtered = filter === 'all' ? productsData : productsData.filter(p => p.category === filter);
+            
+            grid.innerHTML = filtered.map(product => `
+                <div class="product-card animate-on-scroll" data-product-id="${product.id}">
+                    <div class="product-image">
+                        <div class="product-image-icon">${product.icon}</div>
+                        <div class="product-image-title">${product.name}</div>
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-content">
+                        <p class="product-description">${product.shortDesc}</p>
+                        <div class="product-footer">
+                            <button class="btn btn-dark btn-small view-details-btn" data-product-id="${product.id}">View Details</button>
+                            <button class="btn btn-primary btn-small quick-quote-btn" data-product-id="${product.id}">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.dataset.productId);
+                    showProductModal(productId);
+                });
+            });
+
+            document.querySelectorAll('.quick-quote-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const productId = parseInt(e.target.dataset.productId);
+                    const product = productsData.find(p => p.id === productId);
+                    showQuoteModal(product.name);
+                });
+            });
+        }
+
+        // Product Filter
+        document.querySelectorAll('.products-filter .filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.products-filter .filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProducts(btn.dataset.filter);
+            });
+        });
+
+        // Product Modal
+        function showProductModal(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalSubtitle').textContent = product.shortDesc;
+            
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="modal-section">
+                    <h3>Product Description</h3>
+                    <p style="font-size: 1.15rem; color: #64748b; line-height: 1.8;">${product.fullDesc}</p>
+                </div>
+                <div class="modal-section">
+                    <h3>Technical Specifications</h3>
+                    <div class="specs-grid">
+                        ${product.specs.map(spec => `
+                            <div class="spec-item">
+                                <div class="spec-label">${spec.label}</div>
+                                <div class="spec-value">${spec.value}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="modal-section">
+                    <h3>Key Features & Benefits</h3>
+                    <ul class="features-list">
+                        ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            const modal = document.getElementById('productModal');
+            modal.classList.add('active');
+
+            const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+            document.getElementById('callBtn').onclick = () => {
+                window.open(`tel:${config.contact_phone || defaultConfig.contact_phone}`);
+            };
+            document.getElementById('whatsappBtn').onclick = () => {
+                const phone = (config.contact_phone || defaultConfig.contact_phone).replace(/\D/g, '');
+                window.open(`https://wa.me/${phone}?text=Hi, I'm interested in ${product.name}`, '_blank');
+            };
+            document.getElementById('quoteBtn').onclick = () => {
+                modal.classList.remove('active');
+                showQuoteModal(product.name);
+            };
+        }
+
+        document.getElementById('modalClose').addEventListener('click', () => {
+            document.getElementById('productModal').classList.remove('active');
+        });
+
+        // Quote Modal
+        function showQuoteModal(productName) {
+            document.getElementById('quoteProductName').value = productName;
+            document.getElementById('quoteModal').classList.add('active');
+        }
+
+        document.getElementById('quoteModalClose').addEventListener('click', () => {
+            document.getElementById('quoteModal').classList.remove('active');
+        });
+
+        // Quote Form Submission
+        document.getElementById('quoteForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('quoteSubmitBtn');
+            const submitText = document.getElementById('quoteSubmitText');
+            const message = document.getElementById('quoteFormMessage');
+
+            submitBtn.disabled = true;
+            submitText.innerHTML = '<span class="loading-spinner"></span> Submitting...';
+
+            const productName = document.getElementById('quoteProductName').value;
+            const formData = {
+                name: document.getElementById('quoteName').value,
+                email: document.getElementById('quoteEmail').value,
+                phone: document.getElementById('quotePhone').value,
+                company: document.getElementById('quoteCompany').value,
+                subject: `Quote Request - ${productName}`,
+                message: `Product: ${productName}\nQuantity: ${document.getElementById('quoteQuantity').value}\nDetails: ${document.getElementById('quoteMessage').value}`,
+                timestamp: new Date().toISOString()
+            };
+
+            if (window.dataSdk) {
+                const result = await window.dataSdk.create(formData);
+
+                if (result.isOk) {
+                    message.textContent = 'Quote request submitted successfully! Our team will contact you within 24 hours.';
+                    message.className = 'form-message success';
+                    message.style.display = 'block';
+                    document.getElementById('quoteForm').reset();
+                    
+                    setTimeout(() => {
+                        document.getElementById('quoteModal').classList.remove('active');
+                        message.style.display = 'none';
+                    }, 3000);
+                } else {
+                    message.textContent = 'Failed to submit request. Please try again.';
+                    message.className = 'form-message error';
+                    message.style.display = 'block';
+                }
+            }
+
+            submitBtn.disabled = false;
+            submitText.textContent = 'Submit Quote Request';
+        });
+
+        // Gallery Lightbox
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const id = parseInt(item.dataset.galleryId);
+                const data = galleryData.find(g => g.id === id);
+                if (data) {
+                    document.getElementById('lightboxImage').textContent = data.icon;
+                    document.getElementById('lightboxTitle').textContent = data.title;
+                    document.getElementById('lightboxDescription').textContent = data.description;
+                    document.getElementById('lightbox').classList.add('active');
+                }
+            });
+        });
+
+        document.getElementById('lightboxClose').addEventListener('click', () => {
+            document.getElementById('lightbox').classList.remove('active');
+        });
+
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                document.getElementById('lightbox').classList.remove('active');
+            }
+        });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const message = document.getElementById('formMessage');
+
+            submitBtn.disabled = true;
+            submitText.innerHTML = '<span class="loading-spinner"></span> Sending...';
+
+            const formData = {
+                name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            if (window.dataSdk) {
+                const result = await window.dataSdk.create(formData);
+
+                if (result.isOk) {
+                    message.textContent = 'Message sent successfully! We will get back to you soon.';
+                    message.className = 'form-message success';
+                    message.style.display = 'block';
+                    document.getElementById('contactForm').reset();
+                } else {
+                    message.textContent = 'Failed to send message. Please try again.';
+                    message.className = 'form-message error';
+                    message.style.display = 'block';
+                }
+            }
+
+            submitBtn.disabled = false;
+            submitText.textContent = 'Send Message';
+
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+        });
+
+        // Close modals on outside click
+        document.getElementById('productModal').addEventListener('click', (e) => {
+            if (e.target.id === 'productModal') {
+                document.getElementById('productModal').classList.remove('active');
+            }
+        });
+
+        document.getElementById('quoteModal').addEventListener('click', (e) => {
+            if (e.target.id === 'quoteModal') {
+                document.getElementById('quoteModal').classList.remove('active');
+            }
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a1f4c1002fa6ee0',t:'MTc2MzcxODc3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
