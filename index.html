@@ -200,7 +200,7 @@
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1.25rem 2rem;
+            padding: 0rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -2572,11 +2572,49 @@
     <div id="preloader">
         <div class="preloader-content">
             <div class="preloader-logo">
-                <div class="preloader-icon">
-                    🏭
-                </div>
-                <div class="preloader-text">NATRAJ STEEL</div>
-            </div>
+    <img src="./src/logo.png" alt="Natraj Steel Logo" class="preloader-img">
+</div>
+
+<style>
+/* Preloader Wrapper */
+.preloader-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Responsive Logo */
+.preloader-img {
+    width: 180px;      /* Desktop size */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .preloader-img {
+        width: 150px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .preloader-img {
+        width: 120px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+    .preloader-img {
+        width: 100px;
+    }
+}
+</style>
+
             <div class="preloader-spinner"></div>
         </div>
     </div>
@@ -2584,12 +2622,28 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo" data-page="home">
-                <div class="logo-icon">
-                    🏭
-                </div>
-                <span class="logo-text">NATRAJ STEEL</span>
-            </div>
+      <div class="logo" data-page="home">
+    <img src="./src/logo.png" alt="Natraj Steel Logo" class="header-logo">
+</div>
+
+<style>
+/* Wrapper */
+.logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* High clarity logo */
+.header-logo {
+    height: 120px;   /* bigger for clarity */
+    width: 200px;
+    image-rendering: -webkit-optimize-contrast; /* improves sharpness */
+    object-fit: cover;
+}
+</style>
+
+
             <ul class="nav-menu" id="navMenu">
                 <li><a class="nav-link active" data-page="home">Home</a></li>
                 <li><a class="nav-link" data-page="about">About</a></li>
@@ -2649,21 +2703,50 @@
             </div>
         </section>
 
-        <section class="company-intro-section">
-            <div class="container">
-                <div class="company-intro-grid animate-on-scroll">
-                    <div class="company-intro-image">
-                        🏭
-                    </div>
-                    <div class="company-intro-text">
-                        <h2 id="company-intro-title">Welcome to Natraj Steel</h2>
-                        <p id="company-intro-text">With over 25 years of excellence in steel manufacturing, we are India's trusted partner for high-quality steel products. Our state-of-the-art facilities and commitment to innovation ensure that every product meets the highest international standards.</p>
-                        <p>We specialize in producing premium TMT bars, structural steel, and industrial-grade steel products that power India's infrastructure development. From residential buildings to major infrastructure projects, our steel forms the backbone of construction across the nation.</p>
-                        <button class="btn btn-primary" data-page="about">Learn More About Us →</button>
-                    </div>
-                </div>
+      <section class="company-intro-section">
+    <div class="container">
+        <div class="company-intro-grid animate-on-scroll">
+            
+            <!-- Company Intro Image -->
+            <div class="company-intro-image">
+                <img src="./src/Natraj_industery.jpg" alt="Natraj Steel Factory" style="width:100%; height:auto; border-radius:10px;">
             </div>
-        </section>
+
+            <div class="company-intro-text">
+                <h2 id="company-intro-title">Welcome to Natraj Steel</h2>
+                <p id="company-intro-text">
+                    With over 25 years of excellence in steel manufacturing, we are India's trusted partner for 
+                    high-quality steel products. Our state-of-the-art facilities and commitment to innovation ensure 
+                    that every product meets the highest international standards.
+                </p>
+                <p>
+                    We specialize in producing premium TMT bars, structural steel, and industrial-grade steel products 
+                    that power India's infrastructure development. From residential buildings to major infrastructure 
+                    projects, our steel forms the backbone of construction across the nation.
+                </p>
+                <button class="btn btn-primary" data-page="about">Learn More About Us →</button>
+            </div>
+
+        </div>
+    </div>
+</section>
+<style>
+.company-intro-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.company-intro-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+</style>
+
 
         <section class="featured-products-section">
             <div class="container">
@@ -2834,21 +2917,43 @@
             </div>
         </section>
 
-        <section class="about-intro-section">
-            <div class="container">
-                <div class="about-intro-grid animate-on-scroll">
-                    <div class="about-intro-image">
-                        🏭
-                    </div>
-                    <div class="about-intro-text">
-                        <h2>Excellence in Steel Manufacturing Since 1998</h2>
-                        <p>Natraj Steel has been at the forefront of India's steel industry for over 25 years. We combine traditional craftsmanship with cutting-edge technology to deliver steel products that meet the highest international standards.</p>
-                        <p>Our state-of-the-art manufacturing facilities span over 50 acres and are equipped with the latest German and Japanese technology. We produce a comprehensive range of steel products including TMT bars, structural steel, and specialized industrial steel that powers India's infrastructure growth.</p>
-                        <p>With a production capacity of 500,000 tons annually, we serve over 50 countries worldwide while maintaining our commitment to quality, innovation, and customer satisfaction. Our ISO 9001:2015 certification and multiple industry awards stand testament to our unwavering dedication to excellence.</p>
-                    </div>
-                </div>
+       <section class="about-intro-section">
+    <div class="container">
+        <div class="about-intro-grid animate-on-scroll">
+
+            <!-- About Intro Image -->
+            <div class="about-intro-image">
+                <img src="./src/Natraj_industery.jpg" alt="Natraj Steel Factory" class="about-img">
             </div>
-        </section>
+
+            <div class="about-intro-text">
+                <h2>Excellence in Steel Manufacturing Since 1998</h2>
+                <p>Natraj Steel has been at the forefront of India's steel industry for over 25 years. We combine traditional craftsmanship with cutting-edge technology to deliver steel products that meet the highest international standards.</p>
+                <p>Our state-of-the-art manufacturing facilities span over 50 acres and are equipped with the latest German and Japanese technology. We produce a comprehensive range of steel products including TMT bars, structural steel, and specialized industrial steel that powers India's infrastructure growth.</p>
+                <p>With a production capacity of 500,000 tons annually, we serve over 50 countries worldwide while maintaining our commitment to quality, innovation, and customer satisfaction. Our ISO 9001:2015 certification and multiple industry awards stand testament to our unwavering dedication to excellence.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; /* Bigger image */
+    gap: 40px;
+    align-items: center;
+}
+
+.about-intro-image img.about-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Full clear image without cropping */
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+</style>
+
 
         <section class="timeline-section">
             <div class="container">
