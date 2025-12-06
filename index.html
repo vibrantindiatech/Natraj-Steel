@@ -225,19 +225,16 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             z-index: 1001;
+            text-decoration: none;
         }
 
         .logo:hover {
             transform: scale(1.05);
-        }
-
-        .logo:hover .logo-text {
-            text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
         }
 
         .header-logo {
@@ -245,24 +242,11 @@
             width: auto;
             filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.3));
             transition: all 0.3s ease;
-            animation: float 5s ease-in-out infinite;
         }
 
         .logo:hover .header-logo {
             transform: rotate(5deg) scale(1.1);
             filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.5));
-        }
-
-        .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--white) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
         }
 
         .nav-menu {
@@ -2558,7 +2542,6 @@
             .hero-content,
             .company-intro-grid,
             .about-intro-grid,
-            .owner-content,
             .contact-grid,
             .modal-header-content {
                 grid-template-columns: 1fr;
@@ -2799,10 +2782,9 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo" data-page="home">
+            <a href="#" class="logo" data-page="home">
                 <img src="./src/logo.png" alt="Natraj Steel Logo" class="header-logo">
-                <span class="logo-text">NATRAJ STEEL</span>
-            </div>
+            </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a class="nav-link active" data-page="home">Home</a></li>
                 <li><a class="nav-link" data-page="about">About</a></li>
