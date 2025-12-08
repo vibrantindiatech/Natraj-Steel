@@ -177,7 +177,7 @@
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -214,7 +214,7 @@
             color: #e2e8f0;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1.3rem;
             transition: all 0.3s;
             cursor: pointer;
             position: relative;
@@ -331,8 +331,9 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
-                        url('./src/hero-bg.jpg') center/cover no-repeat;
+               background:
+        linear-gradient(rgba(128, 128, 128, 0.196), rgba(128, 128, 128, 0.283)),
+        url("./src/bgImage01.png") center / cover no-repeat;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -1003,8 +1004,9 @@
 
         /* About Page */
         .about-header {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
-                        url('./src/about-bg.jpg') center/cover no-repeat;
+                background:
+        linear-gradient(rgba(128, 128, 128, 0.824), rgba(128, 128, 128, 0.779)),
+        url("./src/bgImage02.webp") center / cover no-repeat;
             padding: 8rem 2rem 6rem;
             color: var(--white);
             text-align: center;
@@ -1016,8 +1018,9 @@
         }
 
         .products-header {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
-                        url('./src/products-header-bg.jpg') center/cover no-repeat;
+            background:
+        linear-gradient(rgba(128, 128, 128, 0.824), rgba(128, 128, 128, 0.779)),
+        url("./src/bgImage03.jpg") center / cover no-repeat;
             padding: 8rem 2rem 6rem;
             color: var(--white);
             text-align: center;
@@ -1029,8 +1032,9 @@
         }
 
         .gallery-header {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
-                        url('./src/gallery-header-bg.jpg') center/cover no-repeat;
+            background:
+        linear-gradient(rgba(128, 128, 128, 0.824), rgba(128, 128, 128, 0.779)),
+        url("./src/bgImage04.webp") center / cover no-repeat;
             padding: 8rem 2rem 6rem;
             color: var(--white);
             text-align: center;
@@ -1042,8 +1046,9 @@
         }
 
         .contact-header {
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
-                        url('./src/contact-bg.jpg') center/cover no-repeat;
+            background:
+        linear-gradient(rgba(128, 128, 128, 0.824), rgba(128, 128, 128, 0.779)),
+        url("./src/Natraj_industery.jpg") center / cover no-repeat;
             padding: 8rem 2rem 6rem;
             color: var(--white);
             text-align: center;
@@ -1258,127 +1263,144 @@
             left: 30px;
         }
 
-        /* Owner Section */
-        .owner-section {
-            padding: 8rem 2rem;
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
-                        url('./src/owner-bg.jpg') center/cover no-repeat;
-            position: relative;
-            overflow: hidden;
+        /* Leadership Section */
+        .leadership-section {
+            padding: 80px 0;
+            background: #f5f7fa;
         }
 
-        .owner-section::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
-            bottom: -150px;
-            right: -150px;
-            animation: float 15s ease-in-out infinite;
-        }
-
-        .owner-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 5rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 4rem;
-        }
-
-        .owner-content:last-child {
-            margin-bottom: 0;
-        }
-
-        .owner-image-wrapper {
-            position: relative;
-        }
-
-        .owner-image {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 32px;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%), 
-                        url('./src/owner-photo.jpg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            box-shadow: 0 30px 80px rgba(245, 158, 11, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .owner-badge {
-            position: absolute;
-            bottom: -20px;
-            right: 20px;
-            background: var(--white);
-            padding: 1.5rem 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            z-index: 2;
-        }
-
-        .owner-badge h4 {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .owner-badge p {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .owner-info h2 {
-            color: var(--white);
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-        }
-
-        .owner-info h3 {
-            color: var(--primary);
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-
-        .owner-quote {
-            color: #cbd5e0;
-            font-size: 1.35rem;
-            line-height: 1.9;
-            font-style: italic;
-            border-left: 4px solid var(--primary);
-            padding-left: 2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .owner-achievements {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .achievement-item {
+        /* Header */
+        .section-header {
             text-align: center;
+            margin-bottom: 50px;
         }
 
-        .achievement-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .section-header h2 {
+            font-size: 2.4rem;
+            color: #1a365d;
+            margin-bottom: 10px;
         }
 
-        .achievement-text {
-            color: #cbd5e0;
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        /* Card Grid */
+        .leadership-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Card */
+        .leadership-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease;
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-header {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+
+        /* Content */
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            color: #1a365d;
+            margin-bottom: 6px;
+        }
+
+        .card-role {
+            font-size: 0.95rem;
+            color: #e63946;
             font-weight: 600;
-            font-size: 1rem;
+            margin-bottom: 12px;
         }
+
+        .card-quote {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Details */
+        .card-details {
+            margin-top: 15px;
+        }
+
+        .card-details p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .card-image {
+                height: 260px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-image {
+                height: 220px;
+            }
+        }
+
+
+    
+    /* Animation classes */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .leadership-cards {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+        }
+    }
 
         /* Products Page */
         .products-content {
@@ -3063,7 +3085,8 @@
     <div class="page" id="about">
         <section class="about-header">
             <div class="container">
-                <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">About Us</span>
+                <span class="section-tag" style="background: rgba(15, 23, 42, 0.434); 
+                color: #fff;">About Us</span>
                 <h1>Building India's Future with Quality Steel</h1>
                 <p>25+ years of excellence in steel manufacturing</p>
             </div>
@@ -3151,40 +3174,96 @@
             </div>
         </section>
 
-        <section class="owner-section">
-            <div class="container">
-                <div class="owner-content animate-on-scroll">
-                    <div class="owner-image-wrapper">
-                        <div class="owner-image">👨‍💼</div>
-                        <div class="owner-badge">
-                            <h4>Rajesh Kumar</h4>
-                            <p>Founder & CEO</p>
-                        </div>
+        <!-- leadership section  -->
+        <section class="leadership-section">
+    <div class="container">
+
+        <div class="section-header">
+            <h2>Our Leadership Team</h2>
+            <p class="section-subtitle">
+                Driving innovation and excellence in steel manufacturing
+            </p>
+        </div>
+
+        <div class="leadership-cards">
+
+            <!-- Card 1 -->
+            <div class="leadership-card">
+                <div class="card-header">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
+                             alt="Rajesh Kumar">
                     </div>
-                    <div class="owner-info">
-                        <h2>Rajesh Kumar</h2>
-                        <h3>Founder & CEO</h3>
-                        <blockquote class="owner-quote">
-                            "Our vision has always been simple - to build the strongest steel for the strongest nation. Every ton of steel we produce carries our commitment to quality, innovation, and the future of India's infrastructure."
-                        </blockquote>
-                        <div class="owner-achievements">
-                            <div class="achievement-item">
-                                <div class="achievement-icon">🏆</div>
-                                <p class="achievement-text">Industry Leader Award 2023</p>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-icon">🌟</div>
-                                <p class="achievement-text">Excellence in Manufacturing</p>
-                            </div>
-                            <div class="achievement-item">
-                                <div class="achievement-icon">💼</div>
-                                <p class="achievement-text">30+ Years Experience</p>
-                            </div>
-                        </div>
+                </div>
+
+                <div class="card-content">
+                    <h3>Rajesh Kumar</h3>
+                    <p class="card-role">Founder</p>
+                    <p class="card-quote">
+                        Building the strongest steel for the strongest nation has been my life’s mission.
+                    </p>
+
+                    <div class="card-details">
+                        <p>• 35+ Years in Steel Industry</p>
+                        <p>• IIT Delhi Alumni</p>
+                        <p>• Industry Leader Award 2023</p>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Card 2 -->
+            <div class="leadership-card">
+                <div class="card-header">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+                             alt="Anjali Sharma">
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <h3>Anjali Sharma</h3>
+                    <p class="card-role">Chief Executive Officer</p>
+                    <p class="card-quote">
+                        Innovation in manufacturing processes is key to sustainable steel production.
+                    </p>
+
+                    <div class="card-details">
+                        <p>• 40% Company Growth</p>
+                        <p>• Global Operations Expert</p>
+                        <p>• Excellence in Manufacturing Award</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="leadership-card">
+                <div class="card-header">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=800&q=80"
+                             alt="Vikram Patel">
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <h3>Vikram Patel</h3>
+                    <p class="card-role">Chairman</p>
+                    <p class="card-quote">
+                        Technology-driven steel manufacturing is the future of our industry.
+                    </p>
+
+                    <div class="card-details">
+                        <p>• 15+ Patents</p>
+                        <p>• Automation Specialist</p>
+                        <p>• MIT Research Collaborator</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 
         <section class="why-choose-section">
             <div class="container">
@@ -3233,7 +3312,8 @@
     <div class="page" id="services">
         <section class="about-header">
             <div class="container">
-                <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Our Services</span>
+                <span class="section-tag" style="background: rgba(15, 23, 42, 0.434); 
+                color: #fff;">Our Services</span>
                 <h1>Comprehensive Steel Solutions</h1>
                 <p>End-to-end services for all your steel requirements</p>
             </div>
@@ -3405,7 +3485,8 @@
     <div class="page" id="products">
         <section class="products-header">
             <div class="container">
-                <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Our Products</span>
+                <span class="section-tag" style="background: rgba(15, 23, 42, 0.434); 
+                color: #fff;">Our Products</span>
                 <h1>Premium Steel Solutions</h1>
                 <p>Engineered for strength, designed for durability</p>
             </div>
@@ -3429,7 +3510,8 @@
     <div class="page" id="gallery">
         <section class="gallery-header">
             <div class="container">
-                <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Gallery</span>
+                <span class="section-tag" style="background: rgba(15, 23, 42, 0.434); 
+                color: #fff;">Gallery</span>
                 <h1>Our Projects & Facilities</h1>
                 <p>Showcasing excellence in steel manufacturing</p>
             </div>
@@ -3500,7 +3582,8 @@
     <div class="page" id="contact">
         <section class="contact-header">
             <div class="container">
-                <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Get In Touch</span>
+                <span class="section-tag" style="background: rgba(15, 23, 42, 0.434); 
+                color: #fff;">Get In Touch</span>
                 <h1>Contact Us</h1>
                 <p>Let's discuss your steel requirements</p>
             </div>
@@ -3515,21 +3598,22 @@
                                 <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div class="contact-details">
                                     <h4>Head Office</h4>
-                                    <p>Industrial Area, Phase 2, Sector 58, New Delhi - 110020, India</p>
+                                    <p>38, New Kamaldip Association, Near Aapa Hotel, Ambika Nagar Road, Odhav, Ahmedabad - 382415</p>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <div class="contact-icon"><i class="fas fa-phone"></i></div>
                                 <div class="contact-details">
                                     <h4>Phone Number</h4>
-                                    <p>+91 11 4567 8900</p>
+                                    <p>+91 76 0071 1650</p>
+                                    <p>+91 98 7931 1650</p>
                                 </div>
                             </div>
                             <div class="contact-item">
                                 <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                                 <div class="contact-details">
                                     <h4>Email Address</h4>
-                                    <p>info@natrajsteel.com</p>
+                                    <p>natrajsteel196@gmail.com</p>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -3543,8 +3627,9 @@
                             <div class="social-links">
                                 <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-link" title="Twitter"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-envelope"></i></a>
+                                <a href="https://wa.me/917600711650" class="social-link" title="WhatsApp" target="_blank" rel="noopener">
+                                <i class="fab fa-whatsapp"></i></a>
+                                <a href="mailto:natrajsteel196@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
                             </div>
                         </div>
                     </div>
@@ -3592,7 +3677,7 @@
                 </div>
                 <div class="map-section animate-on-scroll">
                     <h3>Find Us on Map</h3>
-                    <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0089788456916!2d77.2090212!3d28.6289317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM3JzQ0LjIiTiA3N8KwMTInMzIuNSJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6722.130767995798!2d72.64708534060459!3d23.029923240463933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e86f81545c1d7%3A0xacb0c00882f3fe34!2sAPA%20Hotel!5e1!3m2!1sen!2sin!4v1765186580834!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
@@ -3609,11 +3694,19 @@
                     <p>Excellence in Steel Manufacturing Since 1998</p>
                     <p>Building stronger foundations for a better tomorrow with premium quality steel products and exceptional service.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/yourpageusername" class="social-link"
+                            title="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/yourusername" class="social-link" title="Instagram" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/917600711650" class="social-link" 
+                            title="WhatsApp" target="_blank" rel="noopener">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:natrajsteel196@gmail.com" 
+                            class="social-link"   title="Email"><i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -3766,10 +3859,10 @@
             owner_name: "Rajesh Kumar",
             owner_title: "Founder & CEO",
             owner_quote: "Our vision has always been simple - to build the strongest steel for the strongest nation. Every ton of steel we produce carries our commitment to quality, innovation, and the future of India's infrastructure.",
-            contact_email: "info@natrajsteel.com",
-            contact_phone: "+91 11 4567 8900",
-            contact_whatsapp: "+919876543210",
-            contact_address: "Industrial Area, Phase 2, Sector 58, New Delhi - 110020, India"
+            contact_email: "natrajsteel196@gmail.com",
+            contact_phone: "+917600711650",
+            contact_whatsapp: "+917600711650",
+            contact_address: "38, New Kamaldip Association, Near Aapa Hotel, Ambika Nagar Road, Odhav, Ahmedabad - 382415"
         };
 
         // Products Data
