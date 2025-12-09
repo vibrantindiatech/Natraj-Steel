@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- Add EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -1321,7 +1323,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center;
             display: block;
         }
 
@@ -2062,6 +2064,7 @@
             font-weight: 800;
         }
 
+        /* ifram section  */
         .map-section {
             max-width: 1400px;
             margin: 0 auto;
@@ -2070,21 +2073,27 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+            display: flex;
+            flex-direction: column;
+            height: 600px; /* total height */
         }
 
         .map-section h3 {
             font-size: 2rem;
             color: var(--secondary);
-            margin-bottom: 2rem;
             font-weight: 800;
-            padding: 3rem 3rem 0;
+            padding: 2rem;
+            margin: 0;
+            flex-shrink: 0; /* prevents shrinking */
         }
 
         .map-iframe {
             width: 100%;
-            height: 500px;
             border: none;
+            flex: 1; /* take remaining height */
         }
+
 
         /* Footer */
         .footer {
@@ -3010,7 +3019,6 @@
                                     <li>Material specification guidance</li>
                                     <li>Structural design support</li>
                                     <li>Load calculation assistance</li>
-                                    <li>24/7 technical helpline</li>
                                 </ul>
                             </div>
                         </div>
@@ -3191,13 +3199,13 @@
             <div class="leadership-card">
                 <div class="card-header">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80"
-                             alt="Rajesh Kumar">
+                        <img src="./src/team_image_1.jpg"
+                             alt="Rajendra Sharma">
                     </div>
                 </div>
 
                 <div class="card-content">
-                    <h3>Rajesh Kumar</h3>
+                    <h3>Rajendra Sharma</h3>
                     <p class="card-role">Founder</p>
                     <p class="card-quote">
                         Building the strongest steel for the strongest nation has been my life’s mission.
@@ -3215,37 +3223,13 @@
             <div class="leadership-card">
                 <div class="card-header">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
-                             alt="Anjali Sharma">
+                        <img src="./src/team_image_2.jpg"
+                             alt="Dinesh Sharma">
                     </div>
                 </div>
 
                 <div class="card-content">
-                    <h3>Anjali Sharma</h3>
-                    <p class="card-role">Chief Executive Officer</p>
-                    <p class="card-quote">
-                        Innovation in manufacturing processes is key to sustainable steel production.
-                    </p>
-
-                    <div class="card-details">
-                        <p>• 40% Company Growth</p>
-                        <p>• Global Operations Expert</p>
-                        <p>• Excellence in Manufacturing Award</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="leadership-card">
-                <div class="card-header">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=800&q=80"
-                             alt="Vikram Patel">
-                    </div>
-                </div>
-
-                <div class="card-content">
-                    <h3>Vikram Patel</h3>
+                    <h3>Dinesh Sharma</h3>
                     <p class="card-role">Chairman</p>
                     <p class="card-quote">
                         Technology-driven steel manufacturing is the future of our industry.
@@ -3255,6 +3239,30 @@
                         <p>• 15+ Patents</p>
                         <p>• Automation Specialist</p>
                         <p>• MIT Research Collaborator</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="leadership-card">
+                <div class="card-header">
+                    <div class="card-image">
+                        <img src="./src/team_image_3.jpg"
+                             alt="Aayush Sharma">
+                    </div>
+                </div>
+
+                <div class="card-content">
+                    <h3>Aayush Sharma</h3>
+                    <p class="card-role">Chief Executive Officer</p>
+                    <p class="card-quote">
+                        Innovation in manufacturing processes is key to sustainable steel production.
+                    </p>
+
+                    <div class="card-details">
+                        <p>• 40% Company Growth</p>
+                        <p>• Global Operations Expert</p>
+                        <p>• Excellence in Manufacturing Award</p>
                     </div>
                 </div>
             </div>
@@ -3354,7 +3362,7 @@
                                     <li>Material specification guidance</li>
                                     <li>Structural design support</li>
                                     <li>Load calculation assistance</li>
-                                    <li>24/7 technical helpline</li>
+                                
                                 </ul>
                             </div>
                         </div>
@@ -3677,7 +3685,13 @@
                 </div>
                 <div class="map-section animate-on-scroll">
                     <h3>Find Us on Map</h3>
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6722.130767995798!2d72.64708534060459!3d23.029923240463933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e86f81545c1d7%3A0xacb0c00882f3fe34!2sAPA%20Hotel!5e1!3m2!1sen!2sin!4v1765186580834!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe 
+                        class="map-iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6722.130767995798!2d72.64708534060459!3d23.029923240463933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e86f81545c1d7%3A0xacb0c00882f3fe34!2sAPA%20Hotel!5e1!3m2!1sen!2sin!4v1765186580834!5m2!1sen!2sin"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -3743,7 +3757,7 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2024 Natraj Steel. All rights reserved. | Designed with ❤️ for India's Infrastructure</p>
-                <p style="margin-top: 1rem; font-size: 0.9rem;">Industrial Area, Phase 2, Sector 58, New Delhi - 110020 | Phone: +91 11 4567 8900 | Email: info@natrajsteel.com</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">38, New Kamaldip Association, Near Aapa Hotel, Ambika Nagar Road, Odhav, Ahmedabad - 382415 | Phone: +91 76 0071 1650 | Email: natrajsteel196@gmail.com</p>
             </div>
         </div>
     </footer>
@@ -3784,30 +3798,30 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="quoteName">Full Name *</label>
-                                <input type="text" id="quoteName" required>
+                                <input type="text" id="quoteName" name="quoteName" required>
                             </div>
                             <div class="form-group">
                                 <label for="quoteEmail">Email *</label>
-                                <input type="email" id="quoteEmail" required>
+                                <input type="email" id="quoteEmail" name="quoteEmail" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="quotePhone">Phone *</label>
-                                <input type="tel" id="quotePhone" required>
+                                <input type="tel" id="quotePhone" name="quotePhone" required>
                             </div>
                             <div class="form-group">
                                 <label for="quoteCompany">Company</label>
-                                <input type="text" id="quoteCompany">
+                                <input type="text" id="quoteCompany" name="quoteCompany">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="quoteQuantity">Estimated Quantity</label>
-                            <input type="text" id="quoteQuantity" placeholder="e.g., 50 tons">
+                            <input type="text" id="quoteQuantity" name="quoteQuantity" placeholder="e.g., 50 tons">
                         </div>
                         <div class="form-group">
                             <label for="quoteMessage">Project Details *</label>
-                            <textarea id="quoteMessage" required placeholder="Tell us about your project requirements..."></textarea>
+                            <textarea id="quoteMessage" name="quoteMessage" required placeholder="Tell us about your project requirements..."></textarea>
                         </div>
                         <button type="submit" class="submit-btn" id="quoteSubmitBtn">
                             <span id="quoteSubmitText">Submit Quote Request</span>
@@ -3835,11 +3849,15 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
     <script>
+        // Initialize EmailJS with your public key
+        emailjs.init('KghlO8K9Bz_nwqQ_G'); // ← Replace with your EmailJS public key
+        
         // Preloader
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
-           
+        
             setTimeout(() => {
                 preloader.classList.add('fade-out');
                 setTimeout(() => {
@@ -4099,7 +4117,7 @@
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-           
+        
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
@@ -4108,7 +4126,7 @@
             if (targetPage) {
                 targetPage.classList.add('active');
                 currentPage = pageId;
-               
+            
                 document.querySelectorAll(`[data-page="${pageId}"]`).forEach(link => {
                     if (link.classList.contains('nav-link')) {
                         link.classList.add('active');
@@ -4116,7 +4134,7 @@
                 });
 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-               
+            
                 const navMenu = document.getElementById('navMenu');
                 if (navMenu) navMenu.classList.remove('active');
             }
@@ -4168,7 +4186,7 @@
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             const backToTop = document.getElementById('backToTop');
-           
+        
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
                 backToTop.classList.add('visible');
@@ -4193,13 +4211,13 @@
         function initCounterAnimation() {
             const counters = document.querySelectorAll('.counter');
             const speed = 200;
-           
+        
             counters.forEach(counter => {
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
                     const count = +counter.innerText.replace(/,/g, '');
                     const increment = target / speed;
-                   
+                
                     if (count < target) {
                         counter.innerText = Math.ceil(count + increment).toLocaleString();
                         setTimeout(updateCount, 10);
@@ -4208,7 +4226,7 @@
                         counter.classList.add('animated');
                     }
                 };
-               
+            
                 updateCount();
             });
         }
@@ -4216,7 +4234,7 @@
         // Reviews Carousel
         function initReviewsCarousel() {
             const carousel = $('#reviewsCarousel');
-           
+        
             // Populate carousel with reviews
             let reviewsHTML = '';
             reviewsData.forEach(review => {
@@ -4224,7 +4242,7 @@
                 for (let i = 0; i < review.rating; i++) {
                     stars += '⭐';
                 }
-               
+            
                 reviewsHTML += `
                     <div class="review-card">
                         <div class="review-rating">
@@ -4243,9 +4261,9 @@
                     </div>
                 `;
             });
-           
+        
             carousel.html(reviewsHTML);
-           
+        
             // Initialize Owl Carousel
             carousel.owlCarousel({
                 loop: true,
@@ -4273,7 +4291,7 @@
         function renderFeaturedProducts() {
             const grid = document.getElementById('featuredProductsGrid');
             const featured = productsData.slice(0, 3);
-           
+        
             grid.innerHTML = featured.map(product => `
                 <div class="product-card animate-on-scroll">
                     <div class="product-image">
@@ -4434,43 +4452,61 @@
             document.getElementById('quoteModal').classList.remove('active');
         });
 
-        // Quote Form Submission
-        document.getElementById('quoteForm').addEventListener('submit', async (e) => {
+        // EMAILJS QUOTE FORM SUBMISSION
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const submitBtn = document.getElementById('quoteSubmitBtn');
             const submitText = document.getElementById('quoteSubmitText');
             const message = document.getElementById('quoteFormMessage');
+            const form = document.getElementById('quoteForm');
 
             submitBtn.disabled = true;
-            submitText.innerHTML = '<span class="loading-spinner"></span> Submitting...';
+            submitText.innerHTML = '<span class="loading-spinner"></span> Sending...';
 
-            const productName = document.getElementById('quoteProductName').value;
-            const formData = {
+            // Prepare the email parameters
+            const templateParams = {
                 name: document.getElementById('quoteName').value,
                 email: document.getElementById('quoteEmail').value,
                 phone: document.getElementById('quotePhone').value,
-                company: document.getElementById('quoteCompany').value,
-                subject: `Quote Request - ${productName}`,
-                message: `Product: ${productName}\nQuantity: ${document.getElementById('quoteQuantity').value}\nDetails: ${document.getElementById('quoteMessage').value}`,
-                timestamp: new Date().toISOString()
+                company: document.getElementById('quoteCompany').value || 'Not provided',
+                quantity: document.getElementById('quoteQuantity').value || 'Not specified',
+                message: document.getElementById('quoteMessage').value,
+                date: new Date().toLocaleString()
             };
 
-            // Simulate form submission
-            setTimeout(() => {
-                message.textContent = 'Quote request submitted successfully! Our team will contact you within 24 hours.';
-                message.className = 'form-message success';
-                message.style.display = 'block';
-                document.getElementById('quoteForm').reset();
-                
-                setTimeout(() => {
-                    document.getElementById('quoteModal').classList.remove('active');
-                    message.style.display = 'none';
-                }, 3000);
-
-                submitBtn.disabled = false;
-                submitText.textContent = 'Submit Quote Request';
-            }, 1500);
+            // Send email using EmailJS
+            emailjs.send('service_witeofl', 'template_m53v7oh', templateParams) // ← Replace with your Service ID and Template ID
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    message.textContent = 'Quote request sent successfully! We will contact you within 24 hours.';
+                    message.className = 'form-message success';
+                    message.style.display = 'block';
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Close modal after 3 seconds
+                    setTimeout(() => {
+                        document.getElementById('quoteModal').classList.remove('active');
+                        message.style.display = 'none';
+                    }, 3000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    message.textContent = 'Failed to send quote request. Please try again or contact us directly.';
+                    message.className = 'form-message error';
+                    message.style.display = 'block';
+                    
+                    // Keep modal open so user can try again
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Submit Quote Request';
+                });
         });
 
         // Gallery Lightbox functionality
@@ -4507,41 +4543,61 @@
             }
         });
 
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+        // EMAILJS CONTACT FORM SUBMISSION
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const submitBtn = document.getElementById('submitBtn');
             const submitText = document.getElementById('submitText');
             const message = document.getElementById('formMessage');
+            const form = document.getElementById('contactForm');
 
             submitBtn.disabled = true;
             submitText.innerHTML = '<span class="loading-spinner"></span> Sending...';
 
-            const formData = {
-                name: `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                company: document.getElementById('company').value,
+            // Prepare the email parameters
+            const templateParams = {
+                from_name: document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value,
+                first_name: document.getElementById('firstName').value,
+                last_name: document.getElementById('lastName').value,
+                from_email: document.getElementById('email').value,
+                phone_number: document.getElementById('phone').value,
+                company: document.getElementById('company').value || 'Not provided',
                 subject: document.getElementById('subject').value,
                 message: document.getElementById('message').value,
-                timestamp: new Date().toISOString()
+                to_email: config.contact_email,
+                date: new Date().toLocaleString()
             };
 
-            // Simulate form submission
-            setTimeout(() => {
-                message.textContent = 'Message sent successfully! We will get back to you soon.';
-                message.className = 'form-message success';
-                message.style.display = 'block';
-                document.getElementById('contactForm').reset();
-
-                submitBtn.disabled = false;
-                submitText.textContent = 'Send Message';
-
-                setTimeout(() => {
-                    message.style.display = 'none';
-                }, 5000);
-            }, 1500);
+            // Send email using EmailJS
+            emailjs.send('service_witeofl', 'template_uqx6l8j', templateParams) // ← Replace with your Service ID and Contact Template ID
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    message.textContent = 'Message sent successfully! We will get back to you soon.';
+                    message.className = 'form-message success';
+                    message.style.display = 'block';
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                    }, 5000);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    message.textContent = 'Failed to send message. Please try again or contact us directly.';
+                    message.className = 'form-message error';
+                    message.style.display = 'block';
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitText.textContent = 'Send Message';
+                });
         });
 
         // Close modals on outside click
